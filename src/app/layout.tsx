@@ -7,7 +7,7 @@ import "./globals.css";
 // import { buttonVariants } from "@/components/ui/button"
 // import { LucideKanban } from "lucide-react"
 import Header from "@/components/Header";
-import ThemeProvider from "@/components/theme/theme-switcher";
+import ThemeProvider from "@/components/theme/theme-provider";
 
 
 // const geistSans = Geist({
@@ -31,12 +31,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         
       >
-        <ThemeProvider>
+      <ThemeProvider>
        <Header />
         <main
          className="min-h-screen flex-1 overflow-y-auto
