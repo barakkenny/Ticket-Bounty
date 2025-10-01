@@ -8,10 +8,10 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Link from "next/link";
-import { Ticket } from "../types"
-import { LucideSquareArrowOutUpRight } from 'lucide-react'
+import { LucideSquareArrowOutUpRight, LucideTrash } from 'lucide-react'
 import { Button } from "@/components/ui/button";
 import clsx from "clsx"
+import { Ticket } from "@prisma/client";
 
 type TicketItemProps = {
     ticket: Ticket;
@@ -26,6 +26,12 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
             <LucideSquareArrowOutUpRight className="h-4 w-4" />
         </Link>
         </Button>
+    )
+
+    const deleteButton = (
+      <Button variant="outline" size="icon">
+        <LucideTrash className="h-4 w-4" />
+      </Button>
     )
 
   return (
@@ -52,10 +58,9 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
           </CardContent>
         </Card>
 
-        {isDetail ? null : 
         <div className="flex flex-col gap-y-1">
-            {detailButton}
-        </div>}
+            {isDetail ? deleteButton : detailButton}
+        </div>
     </div>
   )
 }
