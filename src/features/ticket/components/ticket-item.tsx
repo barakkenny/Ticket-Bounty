@@ -1,17 +1,14 @@
 import { ticketPath } from "@/paths"
 import {TICKET_ICONS } from "../constant"
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link";
 import { LucideSquareArrowOutUpRight, LucideTrash } from 'lucide-react'
 import { Button } from "@/components/ui/button";
 import clsx from "clsx"
 import { Ticket } from "@prisma/client";
+import { deleteTicket } from "../actions/delete-ticket";
+
 
 type TicketItemProps = {
     ticket: Ticket;
@@ -28,10 +25,13 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
         </Button>
     )
 
+
     const deleteButton = (
+      <form action={deleteTicket.bind(null, ticket.id)}>
       <Button variant="outline" size="icon">
         <LucideTrash className="h-4 w-4" />
       </Button>
+      </form>
     )
 
   return (
