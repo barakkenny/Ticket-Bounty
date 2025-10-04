@@ -1,4 +1,5 @@
 import Heading from "@/components/heading";
+import { Button } from "@/components/ui/button";
 import { ticketsPath } from "@/paths";
 import Link from "next/link";
 
