@@ -1,10 +1,13 @@
 "use server"
 import { prisma } from "@/lib/prisma"
-import { ticketsPath } from "@/paths"
+import { ticketsPath, ticketPath } from "@/paths"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 
-export const updateTicket = async (id: string,formData: FormData) => {
+export const upsertTicket = async (
+    id: string | undefined,
+    formData: FormData
+) => {
     const data = {
         title: formData.get("title"),
         content: formData.get("content")
@@ -12,7 +15,7 @@ export const updateTicket = async (id: string,formData: FormData) => {
 
     await prisma.ticket.update({
         where: {
-            id,
+            id: id || "",
         },
         data:{ 
             title: data.title as string,
@@ -21,5 +24,9 @@ export const updateTicket = async (id: string,formData: FormData) => {
     })
 
     revalidatePath(ticketsPath())
-    redirect(ticketsPath())
+
+    if(id) {
+        redirect(ticketPath(id))
+    }
+    
 }
