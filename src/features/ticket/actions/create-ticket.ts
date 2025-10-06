@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma"
 import { ticketsPath } from "@/paths"
 import { revalidatePath } from "next/cache"
 
-export const createTicketForm = async (formData: FormData) => {
+export const createTicket = async (formData: FormData) => {
 
         const data = {
             title: formData.get("title"),
