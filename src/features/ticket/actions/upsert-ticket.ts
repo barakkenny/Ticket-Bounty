@@ -32,7 +32,6 @@ export const upsertTicket = async (
     })
     }catch(error){
         return fromErrorToActionState(error, formData)
-        // return { message: "Something went wrong"}
     }
 
     revalidatePath(ticketsPath())
