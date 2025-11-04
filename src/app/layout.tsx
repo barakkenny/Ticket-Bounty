@@ -8,17 +8,8 @@ import "./globals.css";
 // import { LucideKanban } from "lucide-react"
 import Header from "@/components/Header";
 import ThemeProvider from "@/components/theme/theme-provider";
+import { Toaster } from "@/components/ui/sonner"
 
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Road to next",
@@ -44,6 +35,7 @@ export default function RootLayout({
          flex-col">
           {children}
         </main>
+        <Toaster expand/>
         </ThemeProvider>
       </body>
     </html>
